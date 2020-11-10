@@ -18,8 +18,7 @@ struct song_node *new_song(char *n, char* a) {
 }
 
 
-struct song_node *insert_front(struct song_node *node,char *n,char* a){
-	struct song_node *f=new_song(n,a);
+struct song_node *insert_front(struct song_node *node,struct song_node *f){
 	f->next=node;
 	return f;
 }
@@ -31,8 +30,7 @@ int song_compare(struct song_node *n1, struct song_node *n2){
 	return strcmp(n1->artist,n2->artist);
 }
 
-struct song_node *insert_alphabetical(struct song_node *front, char *n, char * a){
-	struct song_node *new=new_song(n,a);
+struct song_node *insert_alphabetical(struct song_node *front, struct song_node *new){
 	struct song_node *node=front;
 	if (song_compare(new,node)<0){
 		new->next=node;

@@ -46,7 +46,7 @@ int main(){
 	struct song_node *song3 = new_song("Like You Do", "joji");
 	struct song_node *song4 = new_song("Ew", "joji");
 
-	struct song_node library[27] = {};
+	struct song_node *library[27] = {};
 
 	add_song(library, song1);
 	add_song(library, song2);
