@@ -6,18 +6,25 @@
 #include "song.h"
 
 struct song_node *add_song(struct song_node *arr, struct song_node *song) {
+
 	int letter = song->artist[0];
+	int val = 0;
+	
+	if (letter >= 97)
+		val = 97; // lower case
+	else
+		val = 65; // upper case
 
-	// lower case
-	if (letter >= 97) {
-		arr[letter-97] = *insert_front(song, song->name, song->artist); // i dont know what to do here
+	if (arr[letter-val].next==0) {
+		arr[letter-val] = *song;
+		arr[letter-val].next=1;
 	}
-	// upper case
+
 	else {
-		arr[letter-65] = *insert_front(song, song->name, song->artist); // same here, i need to fix this up
+		arr[letter-val] = *insert_front(song, song->name, song->artist);	// something here is not working
 	}
 
-	return &arr[0];
+	return &arr[letter-val];
 }
 
 struct song_node *library_find_song(struct song_node *arr, struct song_node *song) {
