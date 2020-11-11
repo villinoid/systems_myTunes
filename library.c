@@ -34,10 +34,18 @@ struct song_node *library_find_song(struct song_node **arr, char *n, char* a) {
 	else
 		val = 65; // upper case
 
-	printf("Looking for [%s: %s]...\n", a, n);
-	printf("Song found!  ");
-	print_song(find_song(arr[letter-val], n, a));
+	struct song_node *search = find_song(arr[letter-val], n, a);
 
+	printf("Looking for [%s: %s]...\n", a, n);
+
+	if (!(search==0)) {
+		printf("Song found!  ");
+		print_song(search);
+	}
+
+	else
+		printf("Song not found!");
+	
 	return find_song(arr[letter-val], n, a);
 }
 
@@ -50,9 +58,17 @@ struct song_node *library_find_artist(struct song_node **arr, char *a) {
 	else
 		val = 65; // upper case
 
+	struct song_node *search = find_artist(arr[letter-val], a);
+
 	printf("Looking for  [%s]...\n", a);
-	printf("Artist found!\n");
-	print_song(find_artist(arr[letter-val], a));
+
+	if (!(search==0)) {
+		printf("Artist found!\n");
+		print_song_list(find_artist(arr[letter-val], a));
+	}
+	
+	else
+		printf("Artist not found!");
 
 	return find_artist(arr[letter-val], a);
 }
@@ -94,7 +110,7 @@ void print_library_artist(struct song_node **arr, char *a) {
 void print_library(struct song_node **arr) {
 	int i;
 	for (i=0;i<26;i++) {
-		if (!arr[i]==0) {
+		if (!(arr[i]==0)) {
 			printf("%c list\n-------\n", i+97);
 			print_song_list(arr[i]);
 			printf("\n");

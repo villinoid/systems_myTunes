@@ -65,12 +65,14 @@ int main(){
 	printf("Testing library_find_song():");
 	printf("\n============================\n");
 	library_find_song(library, "Do Re Mi", "blackbear");
-	printf("\n");
+	library_find_song(library, "corrupted song", "blackbear");
+	printf("\n\n");
 
 	printf("Testing library_find_artist():");
 	printf("\n==============================\n");
 	library_find_artist(library, "joji");
-	printf("\n");
+	library_find_artist(library, "corrupted artist");
+	printf("\n\n");
 
 	printf("Testing library_remove_song():");
 	printf("\n==============================\n");
@@ -96,8 +98,8 @@ int main(){
 	add_song(library, song0);
 	print_library(library);
 
-	printf("Testing print_artist():");
-	printf("\n=======================\n");
+	printf("Testing print_library_artist():");
+	printf("\n===============================\n");
 	print_library_artist(library, "Bazzi");
 	print_library_artist(library, "Juice WRLD");
 	printf("\n");
