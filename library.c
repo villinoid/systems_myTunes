@@ -75,13 +75,9 @@ void print_library_artist(struct song_node **arr, char *a) {
 
 	while(node){
 
-		if (!strcmp(a, node->artist)) {
+		if (!strcmp(a, node->artist))
 			print_song(node);
-			node=node->next;
-		}
-
-		else
-			node=node->next;
+		node=node->next;
 	}
 }
 
