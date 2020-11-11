@@ -6,15 +6,15 @@
 
 struct song_node *new_song(char *n, char* a) {
 
-  struct song_node *ns;
+	struct song_node *ns;
 
-  ns = malloc( sizeof(struct song_node) );
+	ns = malloc( sizeof(struct song_node) );
 
-  strncpy(ns->name, n, sizeof(ns->name)-1);
-  strncpy(ns->artist, a, sizeof(ns->name)-1);
-  ns->next= 0;
+	strncpy(ns->name, n, sizeof(ns->name)-1);
+	strncpy(ns->artist, a, sizeof(ns->name)-1);
+	ns->next= 0;
 
-  return ns;
+	return ns;
 }
 
 
@@ -51,7 +51,7 @@ struct song_node *insert_alphabetical(struct song_node *front, struct song_node 
 	return front;
 }
 void print_song(struct song_node *node){
-	printf("Artist: %s Song: %s\n", node->artist, node->name);
+	printf("%s: %s\n", node->artist, node->name);
 }
 
 void print_song_list(struct song_node *node){
@@ -104,13 +104,9 @@ struct song_node *remove_song(struct song_node *front, char *n, char * a){
 
 struct song_node * free_list(struct song_node *node){
 	while(node){
+		printf("Freeing node: %s - %s\n", node->artist, node->name);
 		free(node);
 		node=node->next;
 	}
 	return 0;
 }
-
-
-
-		
-		
