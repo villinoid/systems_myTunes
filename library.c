@@ -93,3 +93,19 @@ void print_library(struct song_node **arr) {
 	}
 }
 
+void print_shuffle_library(struct song_node **arr) {
+	
+}
+
+struct song_node *library_remove_song(struct song_node **arr, char *n) {
+
+}
+
+struct song_node *free_library(struct song_node **arr) {
+	int i;
+	for(i=0;i<27;i++) {
+		free_list(arr[i]);
+	}
+
+	return 0;
+}
