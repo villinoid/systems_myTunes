@@ -34,26 +34,78 @@ int main(){
 	songs=free_list(songs);
 	*/
 
-	//printf("%d\n", 'A');
-	//printf("%d\n", 'Z');
-	//printf("%d\n", 'a');
-	//printf("%d\n", 'z');
-
+	struct song_node *library[27] = {};
 
 	struct song_node *song1 = new_song("Do Re Mi", "blackbear");
-	struct song_node *song2 = new_song("idfc", "blackbear");
-
+	struct song_node *song2 = new_song("julia", "jeremy zucker");
 	struct song_node *song3 = new_song("Like You Do", "joji");
 	struct song_node *song4 = new_song("Ew", "joji");
-
-	struct song_node *library[27] = {};
+	struct song_node *song5 = new_song("idfc", "blackbear");
+	struct song_node *song6 = new_song("Cradles", "Sub Urban");
+	struct song_node *song7 = new_song("Crazy", "Bazzi");
+	struct song_node *song8 = new_song("Diamonds", "Sam Smith");
+	struct song_node *song9 = new_song("Righteous", "Juice WRLD");
+	struct song_node *song0 = new_song("Mine", "Bazzi");
 
 	add_song(library, song1);
 	add_song(library, song2);
 	add_song(library, song3);
 	add_song(library, song4);
+	add_song(library, song5);
+	add_song(library, song6);
 
+	printf("Testing print_library():\n========================\n");
 	print_library(library);
+
+	printf("Testing print_library_letter():");
+	printf("\n===============================\n");
+	print_library_letter(library, "j");
+	printf("\n");
+
+	printf("Testing library_find_song():");
+	printf("\n============================\n");
+	library_find_song(library, "Do Re Mi", "blackbear");
+	printf("\n");
+
+	printf("Testing library_find_artist():");
+	printf("\n==============================\n");
+	library_find_artist(library, "joji");
+	printf("\n");
+
+	printf("Testing library_remove_song():");
+	printf("\n==============================\n");
+	// more tests go here
+	// print_library(library);
+	printf("\n");
+
+	printf("Testing free_library():");
+	printf("\n=======================\n");
+	free_library(library);
+	printf("\n");
+
+	printf("Library after clear:");
+	printf("\n====================\n");
+	print_library(library);
+	printf("\n");
+
+	printf("Adding songs to empty library():");
+	printf("\n================================\n");
+	add_song(library, song7);
+	add_song(library, song8);
+	add_song(library, song9);
+	add_song(library, song0);
+	print_library(library);
+
+	printf("Testing print_artist():");
+	printf("\n=======================\n");
+	print_library_artist(library, "Bazzi");
+	print_library_artist(library, "Juice WRLD");
+	printf("\n");
+
+	printf("print_shuffle_library():");
+	printf("\n========================\n");
+	// tests
+	printf("\n");
 
 	return 0;
 

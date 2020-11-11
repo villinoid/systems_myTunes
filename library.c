@@ -34,6 +34,10 @@ struct song_node *library_find_song(struct song_node **arr, char *n, char* a) {
 	else
 		val = 65; // upper case
 
+	printf("Looking for [%s: %s]...\n", a, n);
+	printf("Song found!  ");
+	print_song(find_song(arr[letter-val], n, a));
+
 	return find_song(arr[letter-val], n, a);
 }
 
@@ -45,6 +49,10 @@ struct song_node *library_find_artist(struct song_node **arr, char *a) {
 		val = 97; // lower case
 	else
 		val = 65; // upper case
+
+	printf("Looking for  [%s]...\n", a);
+	printf("Artist found!\n");
+	print_song(find_artist(arr[letter-val], a));
 
 	return find_artist(arr[letter-val], a);
 }
@@ -58,6 +66,7 @@ void print_library_letter(struct song_node **arr, char *l) {
 	else
 		val = 65; // upper case
 
+	printf("%c list\n------\n", letter);
 	print_song_list(arr[letter-val]);
 
 }
@@ -73,8 +82,9 @@ void print_library_artist(struct song_node **arr, char *a) {
 
 	struct song_node *node = arr[letter-val];
 
-	while(node){
+	printf("Printing [%s]...\n", a);
 
+	while(node){
 		if (!strcmp(a, node->artist))
 			print_song(node);
 		node=node->next;
@@ -83,9 +93,12 @@ void print_library_artist(struct song_node **arr, char *a) {
 
 void print_library(struct song_node **arr) {
 	int i;
-	for (i=0;i<27;i++) {
-		print_song_list(arr[i]);
-		printf("\n");
+	for (i=0;i<26;i++) {
+		if (!arr[i]==0) {
+			printf("%c list\n-------\n", i+97);
+			print_song_list(arr[i]);
+			printf("\n");
+		}
 	}
 }
 
@@ -99,7 +112,7 @@ struct song_node *library_remove_song(struct song_node **arr, char *n) {
 
 struct song_node *free_library(struct song_node **arr) {
 	int i;
-	for(i=0;i<27;i++) {
+	for(i=0;i<26;i++) {
 		arr[i] = free_list(arr[i]);
 	}
 
