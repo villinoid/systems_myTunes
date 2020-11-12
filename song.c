@@ -81,20 +81,27 @@ struct song_node *find_artist(struct song_node *node, char * a){
 	return node;
 }
 
-struct song_node *random_song(struct song_node *node){
-    int num = 0;
-    struct song_node *songs = node;
-    while(songs){
+int list_size(struct song_node *node){
+	int num=0;
+	while(node){
         num++;
-        songs = songs -> next;
+        node = node -> next;
     }
+	return num;
+}
 
-    int random = rand() % num;
+struct song_node *random_song(struct song_node *node){
+	
+	int size=list_size(node);
+	if ((size)){
+    int random = rand() % size;
+
     
     int i;
     for (i = 0; i < random; i++){
         node = node -> next;
     }
+	}
     return node;
 }
 

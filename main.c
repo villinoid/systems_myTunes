@@ -108,6 +108,7 @@ int main(){
 	printf("\n========================\n");
 	// tests
 	printf("\n");
+	print_shuffle_library(library);
 
 	return 0;
 

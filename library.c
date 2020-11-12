@@ -118,8 +118,37 @@ void print_library(struct song_node **arr) {
 	}
 }
 
-void print_shuffle_library(struct song_node **arr) {
+int library_size(struct song_node **arr){
+	int i;
+	int size=0;
+	for(i=0;i<26;i++){
+		size+=list_size(arr[i]);
+	}
+	return size;
+}
 
+struct song_node *random_library_song(struct song_node **arr){
+	int size=library_size(arr);
+	if (size){
+		int random=rand()%size;
+		//printf("r:%d\n",random);
+		int i=0;
+		while(list_size(arr[i])<=random){
+			random-=list_size(arr[i]);
+			i++;
+		}
+		return random_song(arr[i]);
+	}
+	return 0;
+}
+	
+
+void print_shuffle_library(struct song_node **arr) {
+	int n=10; //insert the code to get a random number of songs here
+	int i;
+	for(int i=0;i<n;i++){
+		print_song(random_library_song(arr));
+	}
 }
 
 struct song_node *library_remove_song(struct song_node **arr, char *n) {
