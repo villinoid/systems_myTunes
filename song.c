@@ -81,6 +81,23 @@ struct song_node *find_artist(struct song_node *node, char * a){
 	return node;
 }
 
+struct song_node *random_song(struct song_node *node){
+    int num = 0;
+    struct song_node *songs = node;
+    while(songs){
+        num++;
+        songs = songs -> next;
+    }
+
+    int random = rand() % num;
+    
+    int i;
+    for (i = 0; i < random; i++){
+        node = node -> next;
+    }
+    return node;
+}
+
 struct song_node *remove_song(struct song_node *front, char *n, char * a){
 	struct song_node *new=new_song(n,a);
 	struct song_node *node=front;
